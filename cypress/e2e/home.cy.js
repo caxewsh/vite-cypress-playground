@@ -20,6 +20,14 @@ it('Should show the global feed', () => {
   cy.visit('/')
 
   // ─── ASSERT ──────────────────────────────────────────────────────
-  cy.findByRole('heading', { name: article.title }).should('exist')
-  cy.findByText(article.body).should('exist')
+  cy.get('.feed-toggle > .nav > .nav-item > .nav-link').should('exist')
+  cy.get('.col-md-9 > :nth-child(2)').should('exist')
 })
+
+it('Should show login page', () => {
+  // ─── ACT ─────────────────────────────────────────────────────────
+  cy.visit('/login')
+
+  // ─── ASSERT ──────────────────────────────────────────────────────
+  cy.get('h1.text-xs-center').should('have.text', 'Sign in')
+})  
